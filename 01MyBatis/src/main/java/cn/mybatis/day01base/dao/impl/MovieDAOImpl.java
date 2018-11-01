@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import javax.security.sasl.SaslException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -37,5 +38,23 @@ public class MovieDAOImpl implements IMovieDAO {
         List<Movie> list = session.selectList("cn.mybatis.day01base.dao.IMovieDAO.findAll");
         return list;
 
+    }
+
+    @Override
+    public Movie getMovieByMovieName(String movieName) throws Exception {
+        //01.我们预习过会发现，我们要想和DB进行通信，需要一个sesssion。session的创建者是sessionFactory。
+        //那么sessionFactory如何生成 ，通过一个SqlSessionFactoryBuilder的build的方法来的。
+        //1.指定一个路径文件，配置文件
+        String path="mybatis.xml";
+        //2. 将路径字符串转成输入流
+        InputStream is=Resources.getResourceAsStream(path);
+        //3.创建出Builder对象
+        SqlSessionFactoryBuilder sb=  new SqlSessionFactoryBuilder();
+        //4.可以通过builder构建工厂
+        SqlSessionFactory factory = sb.build(is);
+        //5.构建session   session是和DB进行交互的一个数据入口
+        SqlSession session = factory.openSession();
+        Movie movie= (Movie)session.selectOne("cn.mybatis.day01base.dao.IMovieDAO.getMovieByMovieName", movieName);
+        return movie;
     }
 }

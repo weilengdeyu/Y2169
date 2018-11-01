@@ -6,4 +6,7 @@
     <select id="findAll" resultType="cn.mybatis.day01base.entity.Movie">
         select * from movie
     </select>
+    <select id="getMovieByMovieName" resultType="cn.mybatis.day01base.entity.Movie">
+        select * from movie WHERE moviename=#{moviename}
+    </select>
 </mapper>
