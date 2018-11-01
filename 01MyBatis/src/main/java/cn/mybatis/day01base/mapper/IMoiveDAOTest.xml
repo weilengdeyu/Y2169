@@ -9,4 +9,8 @@
     <select id="getMovieByMovieName" resultType="cn.mybatis.day01base.entity.Movie">
         select * from movie WHERE moviename=#{moviename}
     </select>
+    <!--添加电影-->
+    <insert id="addMovie">
+        insert into movie(moviename,moviedirector,movieactor) values(#{moviename},#{moviedirctor},#{movieactor})
+    </insert>
 </mapper>

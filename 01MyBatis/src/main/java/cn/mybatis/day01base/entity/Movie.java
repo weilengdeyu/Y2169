@@ -14,6 +14,15 @@ public class Movie {
       private String moviedirctor;
       private String movieactor;
 
+    public Movie() {
+    }
+
+    public Movie(String moviename, String moviedirctor, String movieactor) {
+        this.moviename = moviename;
+        this.moviedirctor = moviedirctor;
+        this.movieactor = movieactor;
+    }
+
     public Integer getMovieid() {
         return movieid;
     }

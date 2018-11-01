@@ -57,4 +57,20 @@ public class MovieDAOImpl implements IMovieDAO {
         Movie movie= (Movie)session.selectOne("cn.mybatis.day01base.dao.IMovieDAO.getMovieByMovieName", movieName);
         return movie;
     }
+
+    @Override
+    public int addMovie(Movie movie) throws Exception {
+        String path="mybatis.xml";
+        InputStream is=Resources.getResourceAsStream(path);
+        SqlSessionFactoryBuilder sb=  new SqlSessionFactoryBuilder();
+        SqlSessionFactory factory = sb.build(is);
+        SqlSession session = factory.openSession();
+
+
+        int count = session.insert("cn.mybatis.day01base.dao.IMovieDAO.addMovie", movie);
+        session.commit(); //增   删  改操作一定要执行在事务环境中。
+        return count;
+    }
+
+
 }

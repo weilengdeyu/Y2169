@@ -20,12 +20,17 @@ import java.util.List;
 public class Test20181101 {
 
     @Test
+    public void t2addMovie() throws Exception {
+        IMovieDAO dao=new MovieDAOImpl();
+        Movie movie=new Movie("李茶的姑妈","沈腾","开麻团队");
+        int count = dao.addMovie(movie);
+        System.out.println(count);
+    }
+
+        @Test
     public void t1() throws Exception {
        IMovieDAO dao=new MovieDAOImpl();
         Movie movie = dao.getMovieByMovieName("无双");
         System.out.println(movie.getMoviename());
     }
-
-
-
 }
