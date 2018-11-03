@@ -19,7 +19,7 @@ import java.util.List;
  * @create 2018-10-30
  * 博客地址:www.cnblogs.com/weilengdeyu
  */
-public class MovieDAOImpl implements IMovieDAO {
+public abstract class MovieDAOImpl implements IMovieDAO {
     @Override
     public List<Movie> findAll() throws Exception {
        //01.我们预习过会发现，我们要想和DB进行通信，需要一个sesssion。session的创建者是sessionFactory。
@@ -71,6 +71,7 @@ public class MovieDAOImpl implements IMovieDAO {
         session.commit(); //增   删  改操作一定要执行在事务环境中。
         return count;
     }
+
 
 
 }

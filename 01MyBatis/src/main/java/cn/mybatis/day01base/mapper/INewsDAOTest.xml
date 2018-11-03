@@ -1,0 +1,15 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.mybatis.day01base.dao.impl.INewsDAO">
+    <resultMap id="newsMapper" type="News">
+        <result column="newname"  property="newsname"></result>
+        <!--事情-->
+    </resultMap>
+
+    <select id="findAll" resultMap="newsMapper">
+        select * from news
+    </select>
+
+</mapper>

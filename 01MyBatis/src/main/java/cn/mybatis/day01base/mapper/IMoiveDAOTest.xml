@@ -3,8 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.mybatis.day01base.dao.IMovieDAO">
-    <select id="findAll" resultType="cn.mybatis.day01base.entity.Movie">
-        select * from movie
+    <!--sql片段，取部分列替代*号-->
+    <sql id="columns">
+        moviename,moviedirector,movieactor
+    </sql>
+    <select id="findAll" resultType="Movie">
+        select <include refid="columns"></include> from movie
     </select>
     <select id="getMovieByMovieName" resultType="cn.mybatis.day01base.entity.Movie">
         select * from movie WHERE moviename=#{moviename}
@@ -13,4 +17,18 @@
     <insert id="addMovie">
         insert into movie(moviename,moviedirector,movieactor) values(#{moviename},#{moviedirctor},#{movieactor})
     </insert>
+
+    <!--3.模糊查询-->
+    <select id="getLikeData"  resultType="Movie">
+       select * from movie where moviename like  '%${moviename}%'
+    </select>
+
+
+
+    <!--4.多条件查询-->
+    <select id="multipleSelectByCondition" resultType="Movie">
+        select * from movie where moviename=#{moviename} and moviedirector=#{moviedirector}
+    </select>
+
+
 </mapper>

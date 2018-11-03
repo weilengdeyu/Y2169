@@ -35,11 +35,11 @@ public class Test20181030 {
 
     @Test
     public void t1() throws Exception {
-       IMovieDAO dao=new MovieDAOImpl();
+    /*   IMovieDAO dao=new MovieDAOImpl();
         List<Movie> list = dao.findAll();
         for (Movie movie:list) {
             System.out.println(movie.getMoviename());
-        }
+        }*/
     }
 
 
