@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="car3" class="cn.happy.day04xmldi.Car">
+        <property name="color" value="红色"></property>
+    </bean>
+
+    <bean id="car2" class="cn.happy.day04xmldi.ChildrenCar">
+        <property name="color" value="蓝色"></property>
+    </bean>
+    <!--
+
+    <bean id="stu" class="cn.happy.day04xmldi.Student">
+        <constructor-arg index="0" value="18"></constructor-arg>
+        <constructor-arg index="1" value="张靓颖"></constructor-arg>
+        <constructor-arg index="2" ref="car"></constructor-arg>
+    </bean>
+-->
+<!--    <bean id="stu" class="cn.happy.day04xmldi.Student" p:name="张靓颖" p:age="18" p:car-ref="car">
+    </bean>-->
+
+
+    <!--自动注入-->
+   <!-- <bean id="stu" class="cn.happy.day04xmldi.Student" p:name="张靓颖" p:age="18" autowire="byName">
+    </bean>-->
+
+    <!--集合属性-->
+    <bean id="collection" class="cn.happy.day04xmldi.MyCollection">
+        <property name="names">
+            <array>
+                <value>陈运</value>
+                <value>王贱</value>
+                <value>黄老师</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>陈运List</value>
+                <value>王贱List</value>
+                <value>黄老师List</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+               <entry key="mrchen">
+                   <value>陈运</value>
+               </entry>
+                <entry key="mrwang">
+                    <value>王亚杰</value>
+                </entry>
+                <entry key="mrhuang">
+                    <value>黄杰</value>
+                </entry>
+            </map>
+        </property>
+        <property name="set">
+            <set>
+                <value>陈运Set</value>
+                <value>王贱Set</value>
+                <value>黄老师Set</value>
+            </set>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="ppchen">陈老师</prop>
+                <prop key="ppwang">王老师</prop>
+                <prop key="pphuang">黄老师</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+

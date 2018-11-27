@@ -1,13 +1,7 @@
-package cn.happy.day03;/**
+package cn.happy.day01;/**
  * Created by Happy on 2018-11-15.
  */
 
-import cn.happy.day02print.Printer;
-import cn.happy.day03aop.dao.IUserDAO;
-import cn.happy.day03aop.entity.User;
-import cn.happy.day03aop.service.IUserService;
-import cn.happy.day03aop.service.UserServiceImpl;
-import cn.happy.day04xmldi.Poser;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -24,9 +18,10 @@ public class Test20181115 {
         //01,我要装载applicationContext.xml文件
         //这就是传说中的Spring容器
         ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
-        Poser service=(Poser) ctx.getBean("poser");
-        System.out.println(service.getCar().getColor());
-
+           HelloService service=(HelloService)ctx.getBean("helloService");
+        HelloService service2=(HelloService)ctx.getBean("helloService");
+        System.out.println(service.getInfo());
+        System.out.println(service2);
     }
 
 }
