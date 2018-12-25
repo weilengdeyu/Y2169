@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.school.dao.IPrivilegeDAO">
+    <!--1.获取和用户绑定的所有权限集合-->
+    <select id="getAllPrivileges"  resultType="Privilege">
+        select * from Sys_Privilege
+        where id in
+        (
+           select privilegeId from sys_role_privilege
+           where roleId in
+           (
+               select roleId from sys_user_role
+               where userId=#{uid}
+           )
+        )
+    </select>
+</mapper>
